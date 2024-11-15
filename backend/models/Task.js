@@ -16,15 +16,6 @@ const TaskSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  dueDate: {
-    type: Date,
-    default: null,
-  },
-  priority: {
-    type: String,
-    enum: ["low", "medium", "high"],
-    default: "medium",
-  }
 }, { timestamps: true }); // Automatically manages createdAt and updatedAt
 
 // Add an instance method to toggle completion state
