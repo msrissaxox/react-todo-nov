@@ -4,18 +4,21 @@
   "private": true,
   "dependencies": {
     "@testing-library/user-event": "^13.5.0",
+    "cors": "^2.8.5",
     "nodemon": "^3.1.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+"scripts": {
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},
+
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -38,6 +41,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@tailwindcss/forms": "^0.5.9",
     "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14"
   }

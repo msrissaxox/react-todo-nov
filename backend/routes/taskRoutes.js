@@ -23,11 +23,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // });
 
+//this router gets specific task
 router.get("/:id", authenticateToken, async (req, res) => {
     try {
       const task = await Task.findOne({
         _id: req.params.id,
-        userId: req.user.id,
+        userId: req.user.id
       });
   
       if (!task) {
@@ -48,6 +49,7 @@ router.get("/:id", authenticateToken, async (req, res) => {
 //   res.send(`${tasks}`);
 // });
 
+//This will retreive all tasks
 router.get('/', authenticateToken, async (req, res) => {
     try {
         const tasks = await Task.find({ userId: req.user.id });

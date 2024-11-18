@@ -4,7 +4,7 @@
 //Use JWT if you want to add user authentication and restrict access to certain endpoints.
 
 //controllers/authController.js
-
+// import index from ("/index.js");
 const bcryptjs = require("bcryptjs");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");

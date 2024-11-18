@@ -13,4 +13,7 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
+// app.use("/tasks", authenticateToken, taskRoutes);
+
+
 module.exports = authenticateToken;
