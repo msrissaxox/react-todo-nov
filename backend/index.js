@@ -75,5 +75,5 @@ console.log(process.env.JWT_SECRET); // Check if the secret is loaded correctly
 // Our user model can then be accessed anywhere in our application by calling mongoose.model('User').
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT} latest version 11/18`);
 });

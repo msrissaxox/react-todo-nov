@@ -7,13 +7,18 @@ import React from "react";
 
 //function to add items to the todo list
 export default function ToDoList() {
+
+  const newListItemAdded = document.getElementsByClassName("newListItem");
+
   function addItem() {
+
     const list = document.getElementById("myList"); //Get the list element
     const newItem = document.getElementById("inputText").value; //get the input value
 
     if (newItem !== "") {
-      const listItem = document.createElement("li"); //create a new list item
-      listItem.textContent = newItem; //Set the text content of the list item
+      const listItem = document.createElement(newListItemAdded); //create a new list item
+      
+      newListItemAdded.textContent = newItem; //Set the text content of the list item
       list.appendChild(listItem); //Append the list item to the list
 
       document.getElementById("newItem").value = ""; //Clear the input field
@@ -34,15 +39,17 @@ export default function ToDoList() {
           stroke="currentColor"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
           />
         </svg>
         <h4 className="font-semibold ml-3 text-lg">To Do List</h4>
       </div>
-      <div>
+
+
+      <div className="newListItem">
         <input className="hidden" type="checkbox" id="task_6" checked />
         <label
           className="flex items-center h-10 px-2 rounded cursor-pointer hover:bg-gray-900"
@@ -56,13 +63,13 @@ export default function ToDoList() {
               fill="currentColor"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
           </span>
-          <span className="ml-4 text-sm">Placeholder</span>
+          <span className="ml-4 text-sm listText">Placeholder</span>
         </label>
       </div>
       <div>
@@ -79,9 +86,9 @@ export default function ToDoList() {
               fill="currentColor"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
           </span>
@@ -102,9 +109,9 @@ export default function ToDoList() {
               fill="currentColor"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
           </span>
@@ -125,9 +132,9 @@ export default function ToDoList() {
               fill="currentColor"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
           </span>
@@ -148,9 +155,9 @@ export default function ToDoList() {
               fill="currentColor"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
           </span>
@@ -170,9 +177,9 @@ export default function ToDoList() {
           }}
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M12 6v6m0 0v6m0-6h6m-6 0H6"
           />
         </svg>
