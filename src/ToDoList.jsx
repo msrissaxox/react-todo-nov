@@ -1,33 +1,45 @@
-import React from "react";
 
-//need to add functionality to the todo list
-//need to add items to to-do with an enter button
-//need to add items to the to-do list with the plus button
-//need to cross items off todo list with the toggle button (tioggle to completed/incomplete)
+import React, { useState} from "react";
 
-//function to add items to the todo list
 export default function ToDoList() {
+  //state for managing tasks
 
-  const newListItemAdded = document.getElementsByClassName("newListItem");
+  //tasks holds the current list of tasks, setTasks is the function to update the task state
+  const [tasks, setTasks] = useState([]); // Initialize as an empty array
+  //inputValue stores the current value of the input field, setInputValue is the state updater function
+  const [inputValue, setInputValue] = useState(""); // State for input field
 
-  function addItem() {
+  //handle input change
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value); // Update the input field state
+  };
 
-    const list = document.getElementById("myList"); //Get the list element
-    const newItem = document.getElementById("inputText").value; //get the input value
-
-    if (newItem !== "") {
-      const listItem = document.createElement(newListItemAdded); //create a new list item
-      
-      newListItemAdded.textContent = newItem; //Set the text content of the list item
-      list.appendChild(listItem); //Append the list item to the list
-
-      document.getElementById("newItem").value = ""; //Clear the input field
+//adds tasks here
+  const addTask = () => {
+    if (inputValue.trim() !== "") {
+      setTasks([...tasks, { text: inputValue, completed: false }]); // Add task as an object with a 'completed' property
+      setInputValue(""); // Clear the input field
     }
-  }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      addTask(); // Add task on pressing Enter
+    }
+  };
+
+  // Toggle task completion
+  const toggleTask = (index) => {
+    const updatedTasks = tasks.map((task, i) =>
+      i === index ? { ...task, completed: !task.completed } : task
+    );
+    setTasks(updatedTasks); // Update tasks with toggled completion
+  };
 
   return (
+    <div className="min-h-screen flex items-center justify-center bg-blue-100">
     <div
-      className="mx-auto py-8 bg-indigo-950 rounded-lg shadow-lg w-96 text-zinc-200"
+      className="mx-auto py-8 px-4 bg-indigo-950 rounded-lg shadow-lg w-96 text-zinc-200 flex flex-col justify-center"
       id="myList"
     >
       <div className="flex items-center justify-center mb-6">
@@ -45,151 +57,49 @@ export default function ToDoList() {
             d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
           />
         </svg>
-        <h4 className="font-semibold ml-3 text-lg">To Do List</h4>
+        <h4 className="font-didact ml-3 text-xl text-neutral-50">To Do List</h4>
       </div>
 
 
-      <div className="newListItem">
-        <input className="hidden" type="checkbox" id="task_6" checked />
-        <label
-          className="flex items-center h-10 px-2 rounded cursor-pointer hover:bg-gray-900"
-          for="task_6"
-        >
-          <span className="flex items-center justify-center w-5 h-5 text-transparent border-2 border-gray-500 rounded-full">
-            <svg
-              className="w-4 h-4 fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </span>
-          <span className="ml-4 text-sm listText">Placeholder</span>
-        </label>
-      </div>
-      <div>
-        <input className="hidden" type="checkbox" id="task_7" checked />
-        <label
-          className="flex items-center h-10 px-2 rounded cursor-pointer hover:bg-gray-900"
-          for="task_7"
-        >
-          <span className="flex items-center justify-center w-5 h-5 text-transparent border-2 border-gray-500 rounded-full">
-            <svg
-              className="w-4 h-4 fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </span>
-          <span className="ml-4 text-sm">Placeholder</span>
-        </label>
-      </div>
-      <div>
-        <input className="hidden" type="checkbox" id="task_8" />
-        <label
-          className="flex items-center h-10 px-2 rounded cursor-pointer hover:bg-gray-900"
-          for="task_8"
-        >
-          <span className="flex items-center justify-center w-5 h-5 text-transparent border-2 border-gray-500 rounded-full">
-            <svg
-              className="w-4 h-4 fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </span>
-          <span className="ml-4 text-sm">Placeholder</span>
-        </label>
-      </div>
-      <div>
-        <input className="hidden" type="checkbox" id="task_9" />
-        <label
-          className="flex items-center h-10 px-2 rounded cursor-pointer hover:bg-gray-900"
-          for="task_9"
-        >
-          <span className="flex items-center justify-center w-5 h-5 text-transparent border-2 border-gray-500 rounded-full">
-            <svg
-              className="w-4 h-4 fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </span>
-          <span className="ml-4 text-sm">Placeholder</span>
-        </label>
-      </div>
-      <div>
-        <input className="hidden" type="checkbox" id="task_10" />
-        <label
-          className="flex items-center h-10 px-2 rounded cursor-pointer hover:bg-gray-900"
-          for="task_10"
-        >
-          <span className="flex items-center justify-center w-5 h-5 text-transparent border-2 border-gray-500 rounded-full">
-            <svg
-              className="w-4 h-4 fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </span>
-          <span className="ml-4 text-sm">Placeholder</span>
-        </label>
-      </div>
-      <button className="flex items-center w-full h-8 px-2 mt-2 text-sm font-medium rounded">
-        <svg
-          className="w-5 h-5 text-gray-400 fill-current"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          onClick={(e) => {
-            e.stopPropagation(); // This prevents the click from bubbling up to the button
-            addItem();
-          }}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-          />
-        </svg>
+      
+      {/* Input for adding tasks */}
+      <div className="flex items-center mb-4 font-didact">
         <input
-          className="flex-grow h-8 ml-4 bg-transparent focus:outline-none font-medium"
-          id="inputText"
+          className="flex-grow h-10 px-3 rounded bg-gray-800 focus:outline-none"
           type="text"
-          placeholder="add a new task"
+          value={inputValue} // Controlled input
+          onChange={handleInputChange} // Handle input changes
+          onKeyDown={handleKeyPress} // Add task on Enter key press
+          placeholder="Add a new task"
         />
-      </button>
+        <button
+          className="ml-2 px-4 py-2 bg-indigo-400 text-white rounded hover:bg-indigo-800"
+          onClick={addTask} // Add task on button click
+        >
+          +
+        </button>
+      </div>
+
+      {/* Dynamic list of tasks */}
+      <ul>
+        {tasks.map((task, index) => (
+          <li
+            key={index}
+            className={`flex items-center justify-between px-3 py-2 mb-2 rounded ${
+              task.completed ? "bg-gray-700 text-gray-400 line-through" : "bg-gray-800 text-white"
+            }`}
+          >
+            <span>{task.text}</span>
+            <button
+              className="text-sm text-indigo-400 hover:text-indigo-300"
+              onClick={() => toggleTask(index)} // Toggle task completion
+            >
+              {task.completed ? "Undo" : "Complete"}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
     </div>
   );
 }
