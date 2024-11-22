@@ -1,4 +1,3 @@
-
 import React, { useState} from "react";
 
 export default function ToDoList() {
@@ -9,6 +8,7 @@ export default function ToDoList() {
   //inputValue stores the current value of the input field, setInputValue is the state updater function
   const [inputValue, setInputValue] = useState(""); // State for input field
 
+  
   //handle input change
   const handleInputChange = (e) => {
     setInputValue(e.target.value); // Update the input field state
@@ -28,6 +28,13 @@ export default function ToDoList() {
     }
   };
 
+  //removes tasks here
+  const removeTask = (index) => {
+    //Filter out the task at the specified index
+    const updatedTasks = tasks.filter((_, i) => i !== index);
+    setTasks(updatedTasks); //Update state with the filtered array
+  }
+
   // Toggle task completion
   const toggleTask = (index) => {
     const updatedTasks = tasks.map((task, i) =>
@@ -35,6 +42,7 @@ export default function ToDoList() {
     );
     setTasks(updatedTasks); // Update tasks with toggled completion
   };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-blue-100">
@@ -96,7 +104,18 @@ export default function ToDoList() {
             >
               {task.completed ? "Undo" : "Complete"}
             </button>
-          </li>
+          
+            <button
+          className="ml-2 px-4 py-2 text-xs bg-indigo-400 text-white rounded hover:bg-indigo-800"
+          onClick={() => removeTask(index)} // Add task on button click
+        >
+          delete
+        </button>
+
+          </li>   
+       
+          
+          
         ))}
       </ul>
     </div>
